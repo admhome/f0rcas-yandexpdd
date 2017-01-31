@@ -79,8 +79,8 @@
     <?php
 	if (isset($_POST['login']))
 	{
-		$post_url = 'https://pddimp.yandex.ru/api2/admin/email/add?domain=test.biz' .'&login='. $_POST['login'] .'&password='. $_POST['password'];
-		$headers = array("Content-Type: application/json", "PddToken: ");
+		$post_url = 'https://pddimp.yandex.ru/api2/admin/email/add?domain=' . $PDD_Domain . '&login='. $_POST['login'] .'&password='. $_POST['password'];
+		$headers = array("Content-Type: application/json", "PddToken: " . $PDD_Token);
 		// создание нового ресурса cURL
 		$ch = curl_init();
 		// установка URL и других необходимых параметров

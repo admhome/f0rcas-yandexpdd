@@ -43,13 +43,13 @@
 	<?php
 		include ('header_top.php');
                 echo "<h2>Управление почтовыми ящиками</h2><br>";
-		$headers = array("Content-Type: application/json", "PddToken: ");
+		$headers = array("Content-Type: application/json", "PddToken: " . $PDD_Token);
 		// создание нового ресурса cURL
 		$ch = curl_init();
 		// установка URL и других необходимых параметров
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
 		curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-		curl_setopt($ch, CURLOPT_URL, "https://pddimp.yandex.ru/api2/admin/email/list?domain=test.biz&page=1&on_page=200");
+		curl_setopt($ch, CURLOPT_URL, "https://pddimp.yandex.ru/api2/admin/email/list?domain=" . $PDD_Domain . "&page=1&on_page=200");
 		// загрузка страницы и выдача её браузеру
 		$response = curl_exec($ch);
 		// завершение сеанса и освобождение ресурсов
@@ -119,7 +119,7 @@
         <?php
                 if (isset($_POST['loginDel']))
                 {
-		$post_url_del = 'https://pddimp.yandex.ru/api2/admin/email/del?domain=test.biz&' .'login='. $_POST['loginDel'];
+		$post_url_del = 'https://pddimp.yandex.ru/api2/admin/email/del?domain=admhome.ru&' .'login='. $_POST['loginDel'];
 		$headers = array("Content-Type: application/json", "PddToken: ");
 		// создание нового ресурса cURL
 		$ch = curl_init();
@@ -198,7 +198,7 @@
         <?php
                 if (isset($_POST['loginCh']))
                 {
-		$post_url_edit = 'https://pddimp.yandex.ru/api2/admin/email/edit?domain=test.biz&' .'login='. $_POST['loginCh'] .'&password='. $_POST['password1'];
+		$post_url_edit = 'https://pddimp.yandex.ru/api2/admin/email/edit?domain=admhome.ru&' .'login='. $_POST['loginCh'] .'&password='. $_POST['password1'];
 		$headers = array("Content-Type: application/json", "PddToken: ");
 		// создание нового ресурса cURL
 		$ch = curl_init();

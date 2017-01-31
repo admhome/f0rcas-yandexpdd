@@ -16,12 +16,12 @@
 
 	// Define $myusername and $mypassword 
 	$myusername = $_POST['myusername']; 
-	$mypassword = $_POST['mypassword']; 
+	$mypassword = md5($_POST['mypassword']); 
 
 	// To protect MySQL injection
 	$myusername = stripslashes($myusername);
-	$mypassword = stripslashes($mypassword);
-		
+	// $mypassword = stripslashes($mypassword);
+
 	$stmt = $db->query("SELECT * FROM $tbl_name WHERE username='$myusername' and password='$mypassword'");
 
 	// rowCount() is counting table row

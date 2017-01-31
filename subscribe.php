@@ -37,13 +37,13 @@
         print '<button type="button" class="btn btn-success" name="podras" data-toggle="modal" data-target="#myModalPod">Подписать на рассылку</button>';
         print '<button type="button" class="btn btn-danger" name="delpod" data-toggle="modal" data-target="#myModalDelPod">Удалить из рассылку</button>';
         echo '<br><br>';
-        $headers = array("Content-Type: application/json", "PddToken: ");
+        $headers = array("Content-Type: application/json", "PddToken: " . $PDD_Token);
 		// создание нового ресурса cURL
 		$ch = curl_init();
 		// установка URL и других необходимых параметров
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
 		curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-		curl_setopt($ch, CURLOPT_URL, "https://pddimp.yandex.ru/api2/admin/email/ml/list?domain=test.biz");
+		curl_setopt($ch, CURLOPT_URL, "https://pddimp.yandex.ru/api2/admin/email/ml/list?domain=" . $PDD_Domain);
 		// загрузка страницы и выдача её браузеру
 		$response = curl_exec($ch);
 		// завершение сеанса и освобождение ресурсов

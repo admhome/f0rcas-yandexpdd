@@ -26,13 +26,13 @@
 <?php
 	include ("header_top.php");
 	echo "<p align='left'><h3>Монитор состояния почтового домена</h3></p>";
-        $headers = array("Content-Type: application/json", "PddToken: ");
+        $headers = array("Content-Type: application/json", "PddToken: " . $PDD_Token);
 		// создание нового ресурса cURL
 		$ch = curl_init();
 		// установка URL и других необходимых параметров
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
 		curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-		curl_setopt($ch, CURLOPT_URL, "https://pddimp.yandex.ru/api2/admin/domain/registration_status?domain=test.biz");
+		curl_setopt($ch, CURLOPT_URL, "https://pddimp.yandex.ru/api2/admin/domain/registration_status?domain=" . $PDD_Domain);
 		// загрузка страницы и выдача её браузеру
 		$response = curl_exec($ch);
 		// завершение сеанса и освобождение ресурсов
